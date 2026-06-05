@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Secure Authentication</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 320px;
+        }
+        .login-container h2 {
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        .login-container p {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        .widget-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Welcome</h2>
+    <p>Please sign in using your Telegram account.</p>
+
+    <div class="widget-wrapper">
+        <script async src="https://telegram.org/js/telegram-widget.js?22" 
+                data-telegram-login="mysamplelog_bot" 
+                data-size="large" 
+                data-onauth="onTelegramAuth(user)" 
+                data-request-access="write"></script>
+    </div>
+</div>
+
+<script type="text/javascript">
+  function onTelegramAuth(user) {
+    // ተጠቃሚው ፍቃድ ሲሰጥ መረጃው በስክሪኑ ላይ ይታያል
+    alert("Login Successful!\nName: " + user.first_name + "\nID: " + user.id + "\nPhone: " + (user.phone ? user.phone : "Not Shared"));
+    console.log(user);
+  }
+</script>
+
+</body>
+</html>
